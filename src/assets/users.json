@@ -1,0 +1,6 @@
+{ "users": [
+    { "id": 34, "username": "spiderman", "superuser": true},
+    { "id": 35, "username": "bob", "superuser": false},
+    { "id": 36, "username": "bob 2", "superuser": false}
+  ]
+}

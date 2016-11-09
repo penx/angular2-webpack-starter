@@ -1,6 +1,8 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { JsonpModule } from '@angular/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -15,9 +17,14 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import { UsersComponent } from './users';
+import { Wikipedia } from './wikipedia';
+import { Contact } from './contact';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
+
+import {UsersService} from './services/usersService';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -40,6 +47,9 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    UsersComponent,
+    Contact,
+    Wikipedia,
     NoContentComponent,
     XLarge
   ],
@@ -47,11 +57,15 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
+
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    UsersService
   ]
 })
 export class AppModule {

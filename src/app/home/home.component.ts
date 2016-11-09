@@ -17,13 +17,17 @@ import { XLarge } from './x-large';
   styleUrls: [ './home.component.css' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './home.component.html'
+
+  // styles: [`h1 { color: red }`],
+  // template: `<h1>Home</h1>`
 })
 export class HomeComponent {
   // Set our default values
   localState = { value: '' };
+  date; //declare local date
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title) {
-
+    setInterval(() => this.date = new Date(), 1000);
   }
 
   ngOnInit() {
